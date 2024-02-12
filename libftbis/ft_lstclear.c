@@ -12,9 +12,9 @@
 
 #include "libft.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+void	ft_lstclear(t_pile **lst, void (*del)(void *))
 {
-	t_list	*head;
+	t_pile	*head;
 
 	if (lst == NULL || !del)
 		return ;
