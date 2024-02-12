@@ -6,7 +6,7 @@
 /*   By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 15:12:08 by grebrune          #+#    #+#             */
-/*   Updated: 2023/12/14 21:07:40 by grebrune         ###   ########.fr       */
+/*   Updated: 2024/02/12 22:08:21 by grebrune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,11 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
+#include "../push_swap.h"
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1024
 # endif
-
-typedef struct s_list
-{
-	void			*content;
-	struct s_list	*next;
-}	t_list;
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
@@ -63,15 +58,15 @@ void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 
-t_list	*ft_lstnew(void *content);
-void	ft_lstadd_front(t_list **lst, t_list *new);
-int		ft_lstsize(t_list *lst);
-t_list	*ft_lstlast(t_list *lst);
-void	ft_lstadd_back(t_list **lst, t_list *new);
-void	ft_lstdelone(t_list *lst, void (*del)(void *));
-void	ft_lstclear(t_list **lst, void (*del)(void *));
-void	ft_lstiter(t_list *lst, void (*f)(void *));
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+t_pile	*ft_lstnew(void *content);
+void	ft_lstadd_front(t_pile **lst, t_pile *new);
+int		ft_lstsize(t_pile *lst);
+t_pile	*ft_lstlast(t_pile *lst);
+void	ft_lstadd_back(t_pile **lst, t_pile *new);
+void	ft_lstdelone(t_pile *lst, void (*del)(void *));
+void	ft_lstclear(t_pile **lst, void (*del)(void *));
+void	ft_lstiter(t_pile *lst, void (*f)(void *));
+t_pile	*ft_lstmap(t_pile *lst, void *(*f)(void *), void (*del)(void *));
 
 size_t	ft_ctofindinstr(char *str, char c);
 char	*get_next_line(int fd);

@@ -6,7 +6,7 @@
 #    By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/07 16:45:45 by grebrune          #+#    #+#              #
-#    Updated: 2024/02/12 21:25:37 by grebrune         ###   ########.fr        #
+#    Updated: 2024/02/12 21:29:01 by grebrune         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,16 +48,16 @@ LIB_A		:=	$(addprefix $(LIB_D), $(LIB))
 #                                                        RULES                                                         #
 ########################################################################################################################
 
-all			:	#lib
+all			:	lib
 				$(MAKE) $(BIN)
 
 lib			:
 				$(MAKE) -C $(LIB_D)
 
-$(SVR)		:	$(OBJS_D) $(OBJS) $(HEAD) # $(LIB_A)
-				$(CC) $(CFLAGS) -o $(BIN) $(OBJS) #$(LIB_A)
+$(SVR)		:	$(OBJS_D) $(OBJS) $(HEAD) $(LIB_A)
+				$(CC) $(CFLAGS) -o $(BIN) $(OBJS) $(LIB_A)
 
-$(OBJS)		:	$(OBJS_D)%.o: $(SRCS_D)%.c $(HEAD) # $(LIB_H)
+$(OBJS)		:	$(OBJS_D)%.o: $(SRCS_D)%.c $(HEAD) $(LIB_H)
 				$(CC) $(CFLAGS) -I/usr/include -Ilibftbis -c $< -o $@
 
 $(OBJS_D)	:
@@ -72,12 +72,12 @@ $(OBJS_D)	:
 
 clean		:
 				$(RM) -r $(OBJS) $(OBJS_D)
-				#$(MAKE) clean -C libftbis
+				$(MAKE) clean -C libftbis
 
 fclean		:	clean
 				$(RM) $(BIN)
-				#$(MAKE) fclean -C libftbis
+				$(MAKE) fclean -C libftbis
 
 re			:	fclean all
 
-.PHONY: all bonus clean fclean re # lib
+.PHONY: all bonus clean fclean re lib
