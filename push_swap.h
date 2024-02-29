@@ -20,8 +20,10 @@
 
 typedef struct s_pile
 {
-	int				*content;
+	int				nbr;
+	int				index;
 	struct s_pile	*next;
+	struct s_pile	*prev;
 }t_pile;
 
 

@@ -6,7 +6,7 @@
 #    By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/07 16:45:45 by grebrune          #+#    #+#              #
-#    Updated: 2024/02/12 21:29:01 by grebrune         ###   ########.fr        #
+#    Updated: 2024/02/29 19:27:35 by grebrune         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,21 +44,34 @@ LIB_H		:=	$(LIB_I)libft.h
 
 LIB_A		:=	$(addprefix $(LIB_D), $(LIB))
 
+LIB			:=	libft.a
+
+PRT_D		:=	ft_printf/
+
+PRT_I		:=	$(PRT_D)
+
+PRT_H		:=	$(PRT_I)ft_printf.h
+
+PRT_A		:=	$(addprefix $(PRT_D), $(PRT))
+
 ########################################################################################################################
 #                                                        RULES                                                         #
 ########################################################################################################################
 
-all			:	lib
+all			:	lib prt
 				$(MAKE) $(BIN)
 
 lib			:
 				$(MAKE) -C $(LIB_D)
 
-$(SVR)		:	$(OBJS_D) $(OBJS) $(HEAD) $(LIB_A)
-				$(CC) $(CFLAGS) -o $(BIN) $(OBJS) $(LIB_A)
+prt			:
+				$(MAKE) -C $(PRT_D)
 
-$(OBJS)		:	$(OBJS_D)%.o: $(SRCS_D)%.c $(HEAD) $(LIB_H)
-				$(CC) $(CFLAGS) -I/usr/include -Ilibftbis -c $< -o $@
+$(BIN)		:	$(OBJS_D) $(OBJS) $(HEAD) $(LIB_A) $(PRT_A)
+				$(CC) $(CFLAGS) -o $(BIN) $(OBJS) $(LIB_A) $(PRT_A)
+
+$(OBJS)		:	$(OBJS_D)%.o: $(SRCS_D)%.c $(HEAD) $(LIB_H) $(PRT_H)
+				$(CC) $(CFLAGS) -I/usr/include -Ilibftbis -Ift_printf -c $< -o $@
 
 $(OBJS_D)	:
 				@mkdir -p $(OBJS_D)
@@ -80,4 +93,4 @@ fclean		:	clean
 
 re			:	fclean all
 
-.PHONY: all bonus clean fclean re lib
+.PHONY: all bonus clean fclean re lib prt

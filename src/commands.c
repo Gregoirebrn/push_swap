@@ -24,9 +24,9 @@ void	ft_swap(t_pile *lst)
 	while (minus->next->next != NULL)
 		minus = minus->next;
 	ft_lstlast(last);
-	lst->content = last->content;
+	lst->nbr = last->nbr;
 	lst = lst->next;
-	lst->content = minus->content;
+	lst->nbr = minus->nbr;
 }
 
 void	ft_push(t_pile **a, t_pile **b)
@@ -35,12 +35,7 @@ void	ft_push(t_pile **a, t_pile **b)
 
 	if (!*b)
 		return ;
-	while (*b->next != NULL)
-		b = *b->next;
-	while (*a->next != NULL)
-		*a = *a->next;
-	new = malloc(sizeof (t_pile));
-	*a->next = new;
+
 }
 
 void	ft_rotate(t_pile *lst)
