@@ -6,7 +6,7 @@
 /*   By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 15:12:08 by grebrune          #+#    #+#             */
-/*   Updated: 2024/02/12 22:08:21 by grebrune         ###   ########.fr       */
+/*   Updated: 2024/03/01 15:07:08 by grebrune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,16 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
-#include "../push_swap.h"
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1024
 # endif
+
+typedef struct s_pile
+{
+	int				nbr;
+	struct s_pile	*next;
+}t_pile;
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
