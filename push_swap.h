@@ -6,7 +6,7 @@
 /*   By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 21:44:09 by grebrune          #+#    #+#             */
-/*   Updated: 2024/02/12 21:58:01 by grebrune         ###   ########.fr       */
+/*   Updated: 2024/03/01 14:23:07 by grebrune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "libftbis/libft.h"
+#include "ft_printf/ft_printf.h"
 
 typedef struct s_pile
 {
