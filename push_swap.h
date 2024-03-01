@@ -20,11 +20,13 @@
 
 typedef struct s_pile
 {
-	int				nbr;
-	int				index;
+	int				*content;
 	struct s_pile	*next;
-	struct s_pile	*prev;
 }t_pile;
 
+void	ft_swap(t_pile **lst);
+void	ft_push(t_pile **a, t_pile **b);
+void	ft_rotate(t_pile **lst);
+void	ft_rev_rot(t_pile **lst);
 
 #endif

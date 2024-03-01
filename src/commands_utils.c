@@ -6,18 +6,19 @@
 /*   By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 22:53:18 by grebrune          #+#    #+#             */
-/*   Updated: 2024/02/12 22:54:47 by grebrune         ###   ########.fr       */
+/*   Updated: 2024/03/01 14:06:31 by grebrune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	do_pa(t_pile *pile)
+void	do_push(t_pile **a, t_pile **b, char c)
 {
-
-}
-
-void	do_pb(t_pile *pile)
-{
-
+	if (c == 'b')
+		ft_push(a, b);
+	else
+	{
+		ft_push(b, b);
+		ft_printf()
+	}
 }

@@ -6,27 +6,22 @@
 /*   By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 21:37:11 by grebrune          #+#    #+#             */
-/*   Updated: 2024/02/28 23:45:27 by grebrune         ###   ########.fr       */
+/*   Updated: 2024/03/01 13:52:48 by grebrune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	ft_swap(t_pile *lst)
+void	ft_swap(t_pile **lst)
 {
-	t_pile	*last;
-	t_pile	*minus;
+	t_pile	*new;
 
-	if (2 > ft_lstsize(lst))
+	if (ft_lstsize(lst) < 2)
 		return ;
-	minus = lst;
-	last = lst;
-	while (minus->next->next != NULL)
-		minus = minus->next;
-	ft_lstlast(last);
-	lst->nbr = last->nbr;
-	lst = lst->next;
-	lst->nbr = minus->nbr;
+	new = (*lst)->next;
+	(*lst)->next = new->next;
+	new->next = *lst;
+	*lst = new;
 }
 
 void	ft_push(t_pile **a, t_pile **b)
@@ -35,15 +30,34 @@ void	ft_push(t_pile **a, t_pile **b)
 
 	if (!*b)
 		return ;
-
+	new = *a;
+	*a = new->next;
+	new->next = *b;
+	*b = new;
 }
 
-void	ft_rotate(t_pile *lst)
+void	ft_rotate(t_pile **lst)
 {
+	t_pile	*new;
+	t_pile	*last;
 
+	new = *lst;
+	*lst = (*lst)->next;
+	*last = ft_lstlast(lst);
+	last->next = new;
+	new->next = NULL;
 }
 
-void	ft_rev_rot(t_pile *lst)
+void	ft_rev_rot(t_pile **lst)
 {
+	t_pile	*last;
+	t_pile	*before;
 
+	before = *lst;
+	while (before->next->next != NULL)
+		before = before->next;
+	last = before->next;
+	before->next = NULL;
+	last->next = *lst;
+	*lst = last;
 }
