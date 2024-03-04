@@ -6,7 +6,7 @@
 /*   By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 15:12:08 by grebrune          #+#    #+#             */
-/*   Updated: 2024/03/01 15:07:08 by grebrune         ###   ########.fr       */
+/*   Updated: 2024/03/01 19:42:47 by grebrune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@
 
 typedef struct s_pile
 {
-	int				nbr;
+	void			*content;
+	int				rank;
 	struct s_pile	*next;
 }t_pile;
 
@@ -47,7 +48,7 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n);
 void	*ft_memchr(const void *s, int c, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 char	*ft_strnstr(const char *big, const char *little, size_t len);
-int		ft_atoi(const char *nptr);
+long	ft_atoi(const char *nptr);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 void	*ft_calloc(size_t nmemb, size_t size);
 char	*ft_strdup(const char *s);
@@ -63,7 +64,7 @@ void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 
-t_pile	*ft_lstnew(void *content);
+t_pile	*ft_lstnew(void	*content);
 void	ft_lstadd_front(t_pile **lst, t_pile *new);
 int		ft_lstsize(t_pile *lst);
 t_pile	*ft_lstlast(t_pile *lst);
