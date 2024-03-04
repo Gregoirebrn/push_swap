@@ -6,11 +6,27 @@
 /*   By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 21:58:30 by grebrune          #+#    #+#             */
-/*   Updated: 2024/02/12 22:23:46 by grebrune         ###   ########.fr       */
+/*   Updated: 2024/03/04 21:34:03 by grebrune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
+
+int		check_sort(t_pile *a)
+{
+	t_pile	*parse;
+	void	*prev;
+
+	parse = a;
+	while (parse->next != NULL)
+	{
+		prev = parse->content;
+		parse = parse->next;
+		if (prev > parse->content)
+			return (0);
+	}
+	return (1);
+}
 
 size_t	tab_len(char **tab)
 {
@@ -22,23 +38,28 @@ size_t	tab_len(char **tab)
 	return (i);
 }
 
-t_pile	*tab_to_pile(char **tab)
+void	tab_to_pile(t_pile **a_pile, char **tab)
 {
 	size_t	x;
-	size_t	i;
-	t_pile	*pile;
+	long	nbr;
+	t_pile	*new;
 
-	x = tab_len(tab);
-	while (tab[x])
+	x = 0;
+	while (tab && tab[x])
 	{
-		if (-2147483648 > ft_atoi(tab[x]) || 2147483647 < ft_atoi(tab[x]))
+		nbr = ft_atoi(tab[x]);
+		if (INT_MIN > nbr || INT_MAX < nbr)
 		{
-			pile = NULL;
-			return (ft_putstr_fd("Error\nAn argument is not an int.", 1), pile);
+			*a_pile = NULL;
+			return ;
 		}
-		pile = ft_lstnew(tab[x]);
-		pile = pile->next;
+		new = ft_lstnew((void *)nbr);
+		if (!new)
+		{
+			ft_printf("Error\nCrash of Malloc.\n");
+			return ;
+		}
+		ft_lstadd_back(a_pile, new);
 		x++;
 	}
-	return (pile);
 }
