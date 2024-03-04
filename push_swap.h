@@ -6,7 +6,7 @@
 /*   By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 21:44:09 by grebrune          #+#    #+#             */
-/*   Updated: 2024/03/01 15:28:42 by grebrune         ###   ########.fr       */
+/*   Updated: 2024/03/04 19:55:51 by grebrune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,15 @@ void	do_rotate(t_pile **a, t_pile **b, char c);
 void	do_rev_rot(t_pile **a, t_pile **b, char c);
 
 int		check_sort(t_pile *a);
+
+void	sort_three(t_pile **a_pile);
+void	*biggest_nbr(t_pile **a_pile);
+
+void	tab_to_pile(t_pile **a_pile, char **tab);
+size_t	tab_len(char **tab);
+
+void	sort_algo(t_pile **a, t_pile **b);
+
+void	print_list(t_pile **a);
 
 #endif
