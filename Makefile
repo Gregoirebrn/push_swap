@@ -6,7 +6,7 @@
 #    By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/07 16:45:45 by grebrune          #+#    #+#              #
-#    Updated: 2024/03/01 15:23:49 by grebrune         ###   ########.fr        #
+#    Updated: 2024/03/04 21:50:50 by grebrune         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@
 
 SRCS		:=	commands.c\
  				commands_utils.c\
+ 				little_algo.c\
  				ps_utils.c\
  				push_swap.c\
 
@@ -46,7 +47,7 @@ LIB_H		:=	$(LIB_I)libft.h
 
 LIB_A		:=	$(addprefix $(LIB_D), $(LIB))
 
-LIB			:=	libft.a
+PRT			:=	libftprintf.a
 
 PRT_D		:=	ft_printf/
 
@@ -88,10 +89,12 @@ $(OBJS_D)	:
 clean		:
 				$(RM) -r $(OBJS) $(OBJS_D)
 				$(MAKE) clean -C libftbis
+				$(MAKE) clean -C ft_printf
 
 fclean		:	clean
 				$(RM) $(BIN)
 				$(MAKE) fclean -C libftbis
+				$(MAKE) fclean -C ft_printf
 
 re			:	fclean all
 
