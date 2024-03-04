@@ -16,7 +16,7 @@ void	ft_swap(t_pile **lst)
 {
 	t_pile	*new;
 
-	if (ft_lstsize(lst) < 2)
+	if (ft_lstsize(*lst) < 2)
 		return ;
 	new = (*lst)->next;
 	(*lst)->next = new->next;
@@ -43,7 +43,7 @@ void	ft_rotate(t_pile **lst)
 
 	new = *lst;
 	*lst = (*lst)->next;
-	*last = ft_lstlast(lst);
+	last = ft_lstlast(*lst);
 	last->next = new;
 	new->next = NULL;
 }
