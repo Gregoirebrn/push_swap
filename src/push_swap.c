@@ -6,7 +6,7 @@
 /*   By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 21:29:47 by grebrune          #+#    #+#             */
-/*   Updated: 2024/03/04 21:49:37 by grebrune         ###   ########.fr       */
+/*   Updated: 2024/03/04 21:51:38 by grebrune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	free_av(char **tab)
 	free(tab);
 }
 
-void	free_list(t_pile **a)
+void	free_bird(t_pile **a, char **av)
 {
 	t_pile	*tmp;
 
@@ -38,6 +38,7 @@ void	free_list(t_pile **a)
 		free(*a);
 		(*a) = tmp;
 	}
+	free_av(av);
 }
 
 void	print_list(t_pile **a)
@@ -69,9 +70,6 @@ int	main(int ac, char **av)
 	if (!av)
 		return (ft_printf("Error\nCrash of Malloc.\n"));
 	tab_to_pile(&a_pile, av);
-	ft_printf("TAB_TO_PILE\n");
-	free_av(av);
-	print_list(&a_pile);
 	if (!a_pile)
 		return (ft_printf("Error\nBad Input\n"), 1);
 	if (!check_sort(a_pile))
@@ -83,8 +81,7 @@ int	main(int ac, char **av)
 //		else
 //			sort_algo(&a_pile, &b_pile);
 	}
-	ft_printf("FIN\n");
 	print_list(&a_pile);
-	free_list(&a_pile);
+	free_bird(&a_pile, av);
 	return (0);
 }
