@@ -26,7 +26,7 @@ typedef struct s_pile
 	void			*content;
 	int				rank;
 	struct s_pile	*next;
-}t_pile;
+}	t_pile;
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
