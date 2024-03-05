@@ -85,4 +85,3 @@ void	do_rev_rot(t_pile **a, t_pile **b, char c)
 		ft_printf("rra\n");
 	}
 }
-

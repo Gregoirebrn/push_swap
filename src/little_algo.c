@@ -42,4 +42,3 @@ void	sort_three(t_pile **a_pile)
 	if ((*a_pile)->content > (*a_pile)->next->content)
 		do_swap(a_pile, NULL, 'a');
 }
-

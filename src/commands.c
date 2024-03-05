@@ -6,7 +6,7 @@
 /*   By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 21:37:11 by grebrune          #+#    #+#             */
-/*   Updated: 2024/03/01 13:52:48 by grebrune         ###   ########.fr       */
+/*   Updated: 2024/03/05 19:02:18 by grebrune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	ft_push(t_pile **a, t_pile **b)
 {
 	t_pile	*new;
 
-	if (!*b)
+	if (!*a)
 		return ;
 	new = *a;
 	*a = new->next;
@@ -40,7 +40,11 @@ void	ft_rotate(t_pile **lst)
 {
 	t_pile	*new;
 	t_pile	*last;
+	t_pile	*size;
 
+	size = *lst;
+	if (ft_lstsize(size) == 1)
+		return ;
 	new = *lst;
 	*lst = (*lst)->next;
 	last = ft_lstlast(*lst);
