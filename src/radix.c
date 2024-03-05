@@ -6,7 +6,7 @@
 /*   By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 17:35:14 by grebrune          #+#    #+#             */
-/*   Updated: 2024/03/05 15:54:11 by grebrune         ###   ########.fr       */
+/*   Updated: 2024/03/05 19:22:19 by grebrune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@ size_t	stack_len(t_pile **a_pile)
 	t_pile	*tmp;
 
 	tmp = (*a_pile);
+	len = 0;
+	if (tmp)
+		len++;
 	while (tmp->next != NULL)
 	{
 		len++;
@@ -26,47 +29,44 @@ size_t	stack_len(t_pile **a_pile)
 	return (len);
 }
 
-void	sort_algo(t_pile **a_pile, t_pile **b_pile)
+void	sort_init_struct(t_sort *sort, t_pile **a_pile)
 {
-	size_t	i;
-	size_t	len;
-	int		bite;
-	t_pile	*parse;
+	sort->len = stack_len(a_pile);
+	sort->bit = 0;
+	sort->len_b = 0;
+}
 
-	parse = (*a_pile);
-	len = stack_len(a_pile);
-	i = 0;
-	bite = 0;
-	while (i < len)
+void	sort_pb(t_pile **a_pile, t_pile **b_pile, t_sort *sort)
+{
+	while (sort->len_b > 0)
 	{
-		if (*((int *)parse->content) >> bite & 1 == 0)
-			do_push(a_pile, b_pile, 'b');
-		else
-			do_rotate(a_pile, b_pile, 'a');
-		i++;
-		bite++;
-		if (i == len && (!check_sort(*a_pile)))
-			i = 0;
+		do_push(a_pile, b_pile, 'a');
+		sort->len_b--;
 	}
 }
 
-//void	sort_algo(t_pile **a, t_pile **b)
-//{
-//	int		index;
-//	size_t	rank;
-//	t_pile	*parkour;
-//
-//	rank = 0;
-//	index = INT_MIN;
-//	while (index < INT_MAX)
-//	{
-//		parkour = (*a);
-//		while (parkour->next != NULL)
-//		{
-//			if (((int)parkour->content) == index)
-//				parkour->rank = rank;
-//		}
-//		index++;
-//		rank++;
-//	}
-//}
+void	sort_algo(t_pile **a_pile, t_pile **b_pile)
+{
+	t_sort	sort;
+
+	sort_init_struct(&sort, a_pile);
+	while (!check_sort(*a_pile))
+	{
+		sort.i = 0;
+		while (sort.i < sort.len)
+		{
+			sort.parse = (*a_pile);
+			sort.i_content = *(int *)(&(sort.parse->content));
+			if (sort.i_content >> sort.bit & 1)
+				do_rotate(a_pile, b_pile, 'a');
+			else
+			{
+				do_push(a_pile, b_pile, 'b');
+				sort.len_b++;
+			}
+			sort.i++;
+		}
+		sort_pb(a_pile, b_pile, &sort);
+		sort.bit++;
+	}
+}
