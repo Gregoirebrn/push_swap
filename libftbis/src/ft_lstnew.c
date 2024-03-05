@@ -12,7 +12,7 @@
 
 #include "../libft.h"
 
-t_pile	*ft_lstnew(void	*content)
+t_pile	*ft_lstnew(int content)
 {
 	t_pile	*new;
 
