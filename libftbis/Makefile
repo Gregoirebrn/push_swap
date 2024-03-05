@@ -6,7 +6,7 @@
 #    By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/07 16:45:45 by grebrune          #+#    #+#              #
-#    Updated: 2023/11/14 18:14:15 by grebrune         ###   ########.fr        #
+#    Updated: 2024/03/05 20:18:16 by grebrune         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,10 +52,6 @@ SRCS		:=	\
 				ft_lstsize.c\
 				ft_lstlast.c\
 				ft_lstadd_back.c\
-				ft_lstdelone.c\
-				ft_lstclear.c\
-				ft_lstiter.c\
-				ft_lstmap.c\
 
 SRCS_D		:=	src/
 
