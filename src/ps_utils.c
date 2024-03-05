@@ -6,7 +6,7 @@
 /*   By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 21:58:30 by grebrune          #+#    #+#             */
-/*   Updated: 2024/03/04 21:34:03 by grebrune         ###   ########.fr       */
+/*   Updated: 2024/03/05 19:23:30 by grebrune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	check_sort(t_pile *a)
 {
 	t_pile	*parse;
-	void	*prev;
+	int		prev;
 
 	parse = a;
 	while (parse->next != NULL)
@@ -54,7 +54,7 @@ void	tab_to_pile(t_pile **a_pile, char **tab)
 			*a_pile = NULL;
 			return ;
 		}
-		new = ft_lstnew((void *)nbr);
+		new = ft_lstnew((int)nbr);
 		if (!new)
 		{
 			ft_printf("Error\nCrash of Malloc.\n");

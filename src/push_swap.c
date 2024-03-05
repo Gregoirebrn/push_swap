@@ -6,7 +6,7 @@
 /*   By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 21:29:47 by grebrune          #+#    #+#             */
-/*   Updated: 2024/03/05 19:23:48 by grebrune         ###   ########.fr       */
+/*   Updated: 2024/03/05 21:00:35 by grebrune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,13 @@ void	print_list(t_pile **a)
 	i = 0;
 	while (parkour->next != NULL)
 	{
-		ft_printf("%d = %d\n", i, parkour->content);
+		ft_printf("content %d = %d\n", i, parkour->content);
+		ft_printf("rank %d = %d\n", i, parkour->rank);
 		parkour = parkour->next;
 		i++;
 	}
-	ft_printf("%d = %d\n", i, parkour->content);
+	ft_printf("content %d = %d\n", i, parkour->content);
+	ft_printf("rank %d = %d\n", i, parkour->rank);
 }
 
 int	main(int ac, char **av)
@@ -88,6 +90,7 @@ int	main(int ac, char **av)
 		else
 			sort_algo(&a_pile, &b_pile);
 	}
+	print_list(&a_pile);
 	free_bird(&a_pile, av);
 	return (0);
 }
