@@ -12,7 +12,7 @@
 
 #include "../push_swap.h"
 
-int		check_sort(t_pile *a)
+int	check_sort(t_pile *a)
 {
 	t_pile	*parse;
 	void	*prev;
@@ -50,6 +50,7 @@ void	tab_to_pile(t_pile **a_pile, char **tab)
 		nbr = ft_atoi(tab[x]);
 		if (INT_MIN > nbr || INT_MAX < nbr)
 		{
+			free_bird(a_pile, NULL);
 			*a_pile = NULL;
 			return ;
 		}
