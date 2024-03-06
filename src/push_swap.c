@@ -6,7 +6,7 @@
 /*   By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 21:29:47 by grebrune          #+#    #+#             */
-/*   Updated: 2024/03/05 21:00:35 by grebrune         ###   ########.fr       */
+/*   Updated: 2024/03/06 20:29:27 by grebrune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	free_bird(t_pile **a, char **av)
 {
 	t_pile	*tmp;
 
-	if (av)
+	if (av && (ft_strncmp(av[0], "./push_swap", 10) != 0))
 		free_av(av);
 	tmp = (*a);
 	while (*a)
@@ -57,12 +57,12 @@ void	print_list(t_pile **a)
 	while (parkour->next != NULL)
 	{
 		ft_printf("content %d = %d\n", i, parkour->content);
-		ft_printf("rank %d = %d\n", i, parkour->rank);
+//		ft_printf("rank %d = %d\n", i, parkour->rank);
 		parkour = parkour->next;
 		i++;
 	}
 	ft_printf("content %d = %d\n", i, parkour->content);
-	ft_printf("rank %d = %d\n", i, parkour->rank);
+//	ft_printf("rank %d = %d\n", i, parkour->rank);
 }
 
 int	main(int ac, char **av)
@@ -81,6 +81,7 @@ int	main(int ac, char **av)
 	tab_to_pile(&a_pile, av);
 	if (!a_pile)
 		return (free_bird(&a_pile, av), ft_printf("Error\nBad Input\n"), 1);
+//	print_list(&a_pile);
 	if (!check_sort(a_pile))
 	{
 		if (ft_lstsize(a_pile) == 2)
@@ -90,7 +91,7 @@ int	main(int ac, char **av)
 		else
 			sort_algo(&a_pile, &b_pile);
 	}
-	print_list(&a_pile);
+//	print_list(&a_pile);
 	free_bird(&a_pile, av);
 	return (0);
 }

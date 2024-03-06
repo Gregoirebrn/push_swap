@@ -6,7 +6,7 @@
 /*   By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 22:53:18 by grebrune          #+#    #+#             */
-/*   Updated: 2024/03/05 19:23:10 by grebrune         ###   ########.fr       */
+/*   Updated: 2024/03/06 18:45:50 by grebrune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	do_swap(t_pile **a, t_pile **b, char c)
 	else
 	{
 		ft_swap(a);
-		ft_printf("sb\n");
+		ft_printf("sa\n");
 	}
 }
 

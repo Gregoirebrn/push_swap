@@ -6,7 +6,7 @@
 /*   By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 17:35:14 by grebrune          #+#    #+#             */
-/*   Updated: 2024/03/05 21:23:06 by grebrune         ###   ########.fr       */
+/*   Updated: 2024/03/06 19:31:07 by grebrune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,28 +40,29 @@ void	sort_pb(t_pile **a_pile, t_pile **b_pile, t_sort *sort)
 
 void	sort_rank(t_pile **a_pile)
 {
-	int		big;
 	size_t	rank;
 	size_t	len;
 	t_pile	*new;
+	t_pile	*big;
 
 	new = (*a_pile);
 	len = ft_lstsize(new);
-	rank = 1;
-	while (rank < len + 1)
+	rank = len ;
+	while (rank != 0)
 	{
+		big = NULL;
 		new = (*a_pile);
-		big = INT_MIN;
 		while (new->next != NULL)
 		{
-			if ((big <= new->content) && (new->rank == 0))
-				new->rank = rank;
+			if (new->rank == 0 && (!big || big->content < new->content))
+				big = new;
 			new = new->next;
-			rank++;
 		}
+		if (new->rank == 0 && (!big || big->content < new->content))
+			big = new;
+		big->rank = rank;
+		rank--;
 	}
-	if (big < new->content)
-		big = new->content;
 }
 
 void	sort_init_struct(t_sort *sort, t_pile **a_pile)
@@ -102,9 +103,6 @@ void	sort_algo(t_pile **a_pile, t_pile **b_pile)
 			sort.i++;
 		}
 		sort_pb(a_pile, b_pile, &sort);
-		print_list(a_pile);
-		printf("=========\n");
-		print_list(b_pile);
 		sort.bit++;
 	}
 }

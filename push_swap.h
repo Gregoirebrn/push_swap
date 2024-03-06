@@ -44,7 +44,7 @@ int		check_sort(t_pile *a);
 void	sort_three(t_pile **a_pile);
 int		biggest_nbr(t_pile **a_pile);
 
-void	tab_to_pile(t_pile **a_pile, char **tab);
+int		tab_to_pile(t_pile **a_pile, char **tab);
 size_t	tab_len(char **tab);
 
 void	sort_algo(t_pile **a, t_pile **b);

@@ -6,7 +6,7 @@
 #    By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/07 16:45:45 by grebrune          #+#    #+#              #
-#    Updated: 2024/03/05 19:26:51 by grebrune         ###   ########.fr        #
+#    Updated: 2024/03/06 18:02:12 by grebrune         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ HEAD		:=	push_swap.h
 
 HEAD_D		:=	.
 
-CFLAGS		:=	-Wall -Wextra -Werror #-g3 -fsanitize=address
+CFLAGS		:=	-Wall -Wextra -Werror# -g3 -fsanitize=address
 
 BIN			:=	push_swap
 
