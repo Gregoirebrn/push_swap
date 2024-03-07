@@ -39,18 +39,17 @@ void	do_push(t_pile **a, t_pile **b, char c);
 void	do_rotate(t_pile **a, t_pile **b, char c);
 void	do_rev_rot(t_pile **a, t_pile **b, char c);
 
-int		check_sort(t_pile *a);
-
-void	sort_three(t_pile **a_pile);
-int		biggest_nbr(t_pile **a_pile);
-
 int		tab_to_pile(t_pile **a_pile, char **tab);
 size_t	tab_len(char **tab);
 
 void	sort_algo(t_pile **a, t_pile **b);
-
-void	print_list(t_pile **a);
+void	sort_five(t_pile **a_pile, t_pile **b_pile);
+void	sort_three(t_pile **a_pile);
+int		biggest_nbr(t_pile **a_pile);
+int		check_sort(t_pile *a);
 
 void	free_bird(t_pile **a, char **av);
+
+void	print_list(t_pile **a);
 
 #endif

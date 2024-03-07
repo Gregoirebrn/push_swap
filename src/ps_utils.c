@@ -6,7 +6,7 @@
 /*   By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 21:58:30 by grebrune          #+#    #+#             */
-/*   Updated: 2024/03/06 20:25:14 by grebrune         ###   ########.fr       */
+/*   Updated: 2024/03/07 16:50:17 by grebrune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,28 @@ size_t	tab_len(char **tab)
 	return (i);
 }
 
+static int	check_dup(t_pile **a_pile)
+{
+	t_pile	*checker;
+	t_pile	*tmp;
+
+	checker = (*a_pile);
+	while (checker->next != NULL)
+	{
+		tmp = checker->next;
+		if (checker->content == checker->next->content)
+			return (1);
+		while (tmp->next != NULL)
+		{
+			if (checker->content == tmp->content)
+				return (1);
+			tmp = tmp->next;
+		}
+		checker = checker->next;
+	}
+	return (0);
+}
+
 int	tab_to_pile(t_pile **a_pile, char **tab)
 {
 	size_t	x;
@@ -51,12 +73,14 @@ int	tab_to_pile(t_pile **a_pile, char **tab)
 	{
 		nbr = ft_atoi(tab[x]);
 		if (INT_MIN > nbr || INT_MAX < nbr)
-			return (free_bird(a_pile, NULL), *a_pile = NULL, 1);
+			return (ft_printf("Error\nArguments not an integer.\n"), 1);
 		new = ft_lstnew((int)nbr);
 		if (!new)
-			return ft_printf("Error\nCrash of Malloc.\n");
+			return (ft_printf("Error\nCrash of Malloc.\n"), 1);
 		ft_lstadd_back(a_pile, new);
 		x++;
 	}
+	if (check_dup(a_pile))
+		return (ft_printf("Error\nArguments contain duplicates.\n"), 1);
 	return (0);
 }
