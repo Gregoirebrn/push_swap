@@ -6,7 +6,7 @@
 /*   By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 19:57:47 by grebrune          #+#    #+#             */
-/*   Updated: 2024/03/07 18:29:00 by grebrune         ###   ########.fr       */
+/*   Updated: 2024/03/08 21:16:06 by grebrune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,27 +43,57 @@ void	sort_three(t_pile **a_pile)
 		do_swap(a_pile, NULL, 'a');
 }
 
+int	little_nbr(t_pile **a_pile)
+{
+	int		lit;
+	t_pile	*new;
+
+	new = (*a_pile);
+	lit = new->content;
+	while (new->next != NULL)
+	{
+		if (lit > new->content)
+			lit = new->content;
+		new = new->next;
+	}
+	if (lit > new->content)
+		lit = new->content;
+	return (lit);
+}
+
+void	sort_last(t_pile **a_pile)
+{
+	t_pile	*last;
+
+	last = ft_lstlast(*a_pile);
+	if (last->rank == 1)
+	{
+		do_rev_rot(a_pile, NULL, 'a');
+		return ;
+	}
+}
+
 void	sort_five(t_pile **a_pile, t_pile **b_pile)
 {
-	t_pile	*parse;
-	int		little;
+	size_t	i;
 
-	do_push(a_pile, b_pile, 'b');
-	do_push(a_pile, b_pile, 'b');
-	sort_three(a_pile);
-	do_push(a_pile, b_pile, 'a');
-	do_push(a_pile, b_pile, 'a');
-	while (!check_sort(*a_pile))
+	i = 1;
+	init_five(a_pile);
+	sort_rank(a_pile);
+	sort_last(a_pile);
+	while (ft_lstsize(*a_pile) != 3)
 	{
-		parse = (*a_pile);
-		little == little_nbr(a_pile);
-		while (parse->next != NULL)
+		if ((*a_pile)->rank == i)
 		{
-			if (parse->content == little)
-				do_push(a_pile, b_pile, 'b');
-			else
-				do_rotate(a_pile, b_pile, 'a');
-			parse = parse->next;
+			do_push(a_pile, b_pile, 'b');
+			i++;
 		}
+		else
+			do_rotate(a_pile, b_pile, 'a');
 	}
+	if ((*b_pile)->rank != 2)
+		do_rotate(a_pile, b_pile, 'b');
+	sort_three(a_pile);
+	while (*b_pile != NULL)
+		do_push(a_pile, b_pile, 'a');
 }

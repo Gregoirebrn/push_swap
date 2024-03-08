@@ -6,7 +6,7 @@
 /*   By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 21:44:09 by grebrune          #+#    #+#             */
-/*   Updated: 2024/03/05 20:21:48 by grebrune         ###   ########.fr       */
+/*   Updated: 2024/03/08 18:08:05 by grebrune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,11 @@ void	sort_five(t_pile **a_pile, t_pile **b_pile);
 void	sort_three(t_pile **a_pile);
 int		biggest_nbr(t_pile **a_pile);
 int		check_sort(t_pile *a);
+void	sort_rank(t_pile **a_pile);
 
-void	free_bird(t_pile **a, char **av);
+void	init_five(t_pile **a_pile);
+
+void	free_bird(t_pile *a, char **av);
 
 void	print_list(t_pile **a);
 

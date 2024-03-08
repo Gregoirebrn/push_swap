@@ -6,11 +6,24 @@
 /*   By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 21:58:30 by grebrune          #+#    #+#             */
-/*   Updated: 2024/03/07 16:50:17 by grebrune         ###   ########.fr       */
+/*   Updated: 2024/03/08 21:42:18 by grebrune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
+
+void	init_five(t_pile **a_pile)
+{
+	t_pile	*parse;
+
+	parse = (*a_pile);
+	while (parse->next != NULL)
+	{
+		parse->rank = 0;
+		parse = parse->next;
+	}
+	parse->rank = 0;
+}
 
 int	check_sort(t_pile *a)
 {
@@ -55,6 +68,8 @@ static int	check_dup(t_pile **a_pile)
 				return (1);
 			tmp = tmp->next;
 		}
+		if (checker->content == tmp->content)
+			return (1);
 		checker = checker->next;
 	}
 	return (0);
